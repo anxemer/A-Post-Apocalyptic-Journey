@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int currentWeaponNo = 0;
     //private bool isFacingRignt = true;
 
+    public bool isInConversationProgress = false;
+
     public bool _isMoving;
     public bool IsMoving
     {
@@ -175,5 +177,19 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage,Vector2 knockBcak)
     {
         rb.velocity = new Vector2(knockBcak.x , knockBcak.y + rb.velocity.y);
+    }
+
+    public void OnTalking()
+    {
+        rb.isKinematic = true;
+        this.enabled = false;
+        rb.velocity = Vector2.zero;
+        isInConversationProgress = true;
+    }
+    public void OutTalking()
+    {
+        isInConversationProgress = false;
+        this.enabled = true;
+        rb.isKinematic = false;
     }
 }
