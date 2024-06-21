@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 2366135958336648108}
   - component: {fileID: 5318824091935060331}
   - component: {fileID: 4476678750579699059}
+  - component: {fileID: 5288223666349292769}
+  - component: {fileID: 1845951942573580215}
+  - component: {fileID: 3722307921769751663}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -369,6 +372,53 @@ MonoBehaviour:
   bowPrefaps: {fileID: 2399149737620072547, guid: 31e1c53c3e82e0044b62a9496b6d428b, type: 3}
   bulletPrefaps: {fileID: 5280556882195790419, guid: 5b0c0876abe6f38488e4b64cf7d4130d, type: 3}
   positionSpawn: {fileID: 5332321489538571246}
+--- !u!114 &5288223666349292769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827474672430817877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ff223de6a120e4488e88e6841678fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+  initialItems:
+  - quantity: 2
+    item: {fileID: 11400000, guid: 39aef218ce7d3e548a605a7d4fe10a79, type: 2}
+    itemState: []
+--- !u!114 &1845951942573580215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827474672430817877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7236c5474dace0a4e87d676ae5bab20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+--- !u!114 &3722307921769751663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827474672430817877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7dedd21a0e3848b10262a10cdf0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: d87cb564c8993b640927dbccdece7e08, type: 2}
+  inventoryData: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+  parametersToModify: []
+  itemCurrentState: []
 --- !u!1 &3654961612898590974
 GameObject:
   m_ObjectHideFlags: 0

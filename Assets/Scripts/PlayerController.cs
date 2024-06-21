@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat(AnimationStrings.MoveX, moveInput.x);
             animator.SetFloat(AnimationStrings.MoveY, moveInput.y);
             if (moveInput.x != 0) moveInput.y = 0;
+            if (moveInput.y != 0) moveInput.x = 0;
 
             rb.velocity = new Vector2(CurrentSpeed * moveInput.x * Time.fixedDeltaTime, moveInput.y * moveSpeed * Time.fixedDeltaTime);
         }
