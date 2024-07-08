@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2590499895484479577}
   - component: {fileID: 9112253351805932116}
   - component: {fileID: 3523207714730483658}
-  - component: {fileID: 8486476391467618839}
+  - component: {fileID: 763805763860078464}
   m_Layer: 12
-  m_Name: Chicken
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1852269701
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87b0be14180e9be4681e14b64915d462, type: 3}
+  m_Sprite: {fileID: 21300024, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: -0.00833714, y: -0.120892525}
   serializedVersion: 2
   m_Radius: 0.299523
---- !u!114 &8486476391467618839
+--- !u!114 &763805763860078464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 3290940083198717067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9636a5ab9c7319f47b910daf5149a7a0, type: 3}
+  m_Script: {fileID: 11500000, guid: ff67fc36f2dbda043a6a21016358eaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 39aef218ce7d3e548a605a7d4fe10a79, type: 2}
+  <Quantity>k__BackingField: 2
+  audioSource: {fileID: 0}
+  duration: 0.3
+  popDuration: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9689878
+      value: 0.20774575
+      inSlope: -1.6372344
+      outSlope: -1.6372344
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10482146
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0733337
+      value: 0.0028495789
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  heightY: 1.5

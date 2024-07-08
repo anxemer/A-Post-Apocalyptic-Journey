@@ -107,7 +107,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4007550498750715824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4382267, y: -0.20357895}
+  m_Offset: {x: 0.53226745, y: -0.20357895}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32925415, y: 1.4071579}
+  m_Size: {x: 0.51733565, y: 1.4071579}
   m_EdgeRadius: 0
 --- !u!114 &406467341245999690
 MonoBehaviour:
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  knockBack: {x: 10, y: 10}
+  knockBackForce: 100
 --- !u!1 &7134173321652465145
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 5552934667238001834}
   - component: {fileID: 9019240731977259539}
   - component: {fileID: 1369445814603041803}
+  - component: {fileID: 5667912440262696045}
   m_Layer: 8
   m_Name: Zombie
   m_TagString: Untagged
@@ -354,7 +355,7 @@ MonoBehaviour:
   - {fileID: 0}
   wayPointReachedDistance: 0.25
   rb: {fileID: 7406058778413400605}
-  _isMoving: 0
+  _isMoving: 1
   _hasTarget: 0
 --- !u!114 &9019240731977259539
 MonoBehaviour:
@@ -404,3 +405,16 @@ MonoBehaviour:
   _maxHealth: 100
   invicintableTime: 0.25
   _isAlive: 1
+--- !u!114 &5667912440262696045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134173321652465145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7766e08983262764caf91e9da44b2655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefaps: {fileID: 3290940083198717067, guid: 94fce781cd2974246ae82f21630ef0a4, type: 3}

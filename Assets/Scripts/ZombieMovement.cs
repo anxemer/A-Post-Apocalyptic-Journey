@@ -12,6 +12,8 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] private List<Transform> wayPoints;
     [SerializeField] private float wayPointReachedDistance = 0.25f;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private PickUpSpawner spawner;
+    [SerializeField] private Damageable damageable;
     private Animator animator;
 
     private DetectionZone detectionObj;
@@ -37,12 +39,21 @@ public class ZombieMovement : MonoBehaviour
             _hasTarget = value;
             animator.SetBool(AnimationStrings.hasTarget, value);
         } }
+    public bool _isAlive = true; // Variable to track if the zombie is alive
     public bool IsAlive
     {
         get
         {
-            return animator.GetBool(AnimationStrings.isAlive);
-
+            return _isAlive;
+        }
+        private set
+        {
+            _isAlive = value;
+            animator.SetBool(AnimationStrings.isAlive, value);
+            if (!value)
+            {
+                OnDeath(); // Call OnDeath when the zombie dies
+            }
         }
     }
     public float AttackCoolDown
@@ -60,7 +71,6 @@ public class ZombieMovement : MonoBehaviour
     {
         nextWayPoint = wayPoints[wayNumber];
 
-
     }
     // Start is called before the first frame update
     void Awake()
@@ -68,7 +78,6 @@ public class ZombieMovement : MonoBehaviour
         detectionObj = GetComponent<DetectionZone>();
         animator = GetComponent<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -81,7 +90,6 @@ public class ZombieMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         if (IsAlive)
         {
             animator.SetFloat(AnimationStrings.MoveX, Mathf.Max(rb.velocity.x, -1));
@@ -92,13 +100,7 @@ public class ZombieMovement : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-            
-        
-
-
-
     }
-
     public void Move()
     {
         if (detectionObj.detectedCollider.Count > 0)
@@ -136,7 +138,6 @@ public class ZombieMovement : MonoBehaviour
             {
                 animator.SetFloat(AnimationStrings.MoveX, Mathf.Max(rb.velocity.x, -1));
             }
-
         }
         else
         {
@@ -144,7 +145,6 @@ public class ZombieMovement : MonoBehaviour
             {
                 //facing left
                 animator.SetFloat(AnimationStrings.MoveX, Mathf.Min(rb.velocity.x, 1));
-
             }
         }
         if (transform.localScale.y > 0)
@@ -153,7 +153,6 @@ public class ZombieMovement : MonoBehaviour
             if(rb.velocity.y < 0)
             {
                 animator.SetFloat(AnimationStrings.MoveY, Mathf.Max(rb.velocity.y, -1));
-
             }
         }
         else
@@ -161,12 +160,19 @@ public class ZombieMovement : MonoBehaviour
             if(rb.velocity.y < 0)
             {
                 animator.SetFloat(AnimationStrings.MoveY, Mathf.Min(rb.velocity.y, 1));
-
             }
         }
     }
     public void OnHit(int damage, Vector2 knockBcak)
     {
         rb.AddForce(knockBcak);
+        if(damageable.MaxHealth > 0)
+        {
+            IsAlive = false;
+        }
+    }
+    private void OnDeath()
+    {
+        spawner.DropItem(); // Call the DropItem method from the PickUpSpawner
     }
 }

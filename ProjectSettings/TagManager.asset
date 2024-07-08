@@ -20,7 +20,7 @@ TagManager:
   - PlayerHitBox
   - Food
   - NPC
-  - 
+  - Item
   - 
   - 
   - 
@@ -59,4 +59,7 @@ TagManager:
     locked: 0
   - name: NPC
     uniqueID: 2922275435
+    locked: 0
+  - name: Item
+    uniqueID: 975551645
     locked: 0

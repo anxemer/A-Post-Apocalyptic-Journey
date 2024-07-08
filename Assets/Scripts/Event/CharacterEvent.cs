@@ -12,5 +12,6 @@ namespace Assets.Scripts.Event
     {
         public static UnityAction<GameObject,int> characterTookDamage;
         public static UnityAction<GameObject,int> characterHealed;
+        public static UnityAction EnemyDeath;
     }
 }

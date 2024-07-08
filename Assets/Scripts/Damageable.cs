@@ -10,6 +10,7 @@ public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
     public UnityEvent<float, float> playerHealthChanged;
+    public UnityEvent death;
     private Animator animator;
     [SerializeField] private int _health = 100;
     [SerializeField] private int _maxHealth = 100;
@@ -83,5 +84,12 @@ public class Damageable : MonoBehaviour
         int currentHeal = Mathf.Min(maxHealth, healRestore);
         Health += currentHeal;
         CharacterEvent.characterHealed(gameObject, currentHeal);
+    }
+    public void OnDeath()
+    {
+        if (!IsAlive)
+        {
+            CharacterEvent.EnemyDeath();
+        }
     }
 }
