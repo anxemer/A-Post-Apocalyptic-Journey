@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 5288223666349292769}
   - component: {fileID: 1845951942573580215}
   - component: {fileID: 3722307921769751663}
+  - component: {fileID: 2060587474473940861}
+  - component: {fileID: 632324757031634898}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -42,6 +44,7 @@ Transform:
   m_Children:
   - {fileID: 8054247093904344872}
   - {fileID: 8920339650226898771}
+  - {fileID: 7056314686136303813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4495143168848934134
@@ -196,6 +199,7 @@ MonoBehaviour:
   rb: {fileID: 4748646241336532116}
   isAttack: 0
   currentWeaponNo: 0
+  isInConversationProgress: 0
   _isMoving: 0
 --- !u!114 &2366135958336648108
 MonoBehaviour:
@@ -353,6 +357,9 @@ MonoBehaviour:
   playerHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  death:
+    m_PersistentCalls:
+      m_Calls: []
   _health: 100
   _maxHealth: 100
   invicintableTime: 1
@@ -386,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+  menu: {fileID: 0}
   initialItems:
   - quantity: 2
     item: {fileID: 11400000, guid: 39aef218ce7d3e548a605a7d4fe10a79, type: 2}
@@ -419,6 +427,77 @@ MonoBehaviour:
   inventoryData: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
   parametersToModify: []
   itemCurrentState: []
+--- !u!114 &2060587474473940861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827474672430817877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289dd67bbc2723843b71c4f0878e07a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionPoint: {fileID: 7056314686136303813}
+  _interactionRadius: 0.5
+  _interactableMask:
+    serializedVersion: 2
+    m_Bits: 32768
+  hasAnswer: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+  _numFoubd: 0
+  questionPanel: {fileID: 0}
+--- !u!114 &632324757031634898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827474672430817877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ec8d2474c1b9148a54a5f491ac8af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageable: {fileID: 5318824091935060331}
+  inventoryItem: {fileID: 11400000, guid: 4470680b05110454398abc7e6f343089, type: 2}
+  MyData:
+    inventoryData:
+      items: []
+    playerPosition: {x: 0, y: 0, z: 0}
+    playerHealth: 0
+    inventoryItem: {fileID: 0}
+--- !u!1 &1954463276160425370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7056314686136303813}
+  m_Layer: 0
+  m_Name: interactorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7056314686136303813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954463276160425370}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: -0.43, z: 0.020260619}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5398318100216138536}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3654961612898590974
 GameObject:
   m_ObjectHideFlags: 0

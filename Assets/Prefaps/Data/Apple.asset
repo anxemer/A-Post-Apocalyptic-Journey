@@ -15,10 +15,10 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Apple
-  <Description>k__BackingField: ' health'
+  <Description>k__BackingField: Eat restores 5 health
   <Image>k__BackingField: {fileID: 21300024, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
   <DefaultParametersList>k__BackingField: []
   modifiersData:
   - statModifier: {fileID: 11400000, guid: eb73257ebc918774a9bc4513e169498f, type: 2}
-    value: 20
+    value: 5
   <actionSFX>k__BackingField: {fileID: 0}

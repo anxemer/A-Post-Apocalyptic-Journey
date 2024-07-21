@@ -33,6 +33,8 @@ using UnityEngine;
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         Hide();
         mouseFollower.Toggle(false);
         itemDescription.ResetDescription();
@@ -58,8 +60,12 @@ using UnityEngine;
     {
         foreach (var item in listOfUIItems)
         {
-            item.ResetData();
-            item.Deselect();
+            if (item != null)
+            {
+                item.ResetData();
+                item.Deselect();
+
+            }
         }
     }
 

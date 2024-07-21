@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float aimSpeed = 10f;
@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public int currentWeaponNo = 0;
     //private bool isFacingRignt = true;
-
+    private static PlayerController instance;
+    public static PlayerController Instance { get { return instance; } }
     public bool isInConversationProgress = false;
 
     public bool _isMoving;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+
         animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update

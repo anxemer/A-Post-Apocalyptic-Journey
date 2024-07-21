@@ -8,6 +8,10 @@ public class InventoryController : MonoBehaviour
 {
     [SerializeField] private UIInventoryPage inventoryUI;
     [SerializeField] private InventorySO inventoryData;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
+
+    private bool isActive = false;
     public  List<InventoryItem> initialItems = new List<InventoryItem>();
     // Start is called before the first frame update
     void Start()
@@ -16,7 +20,7 @@ public class InventoryController : MonoBehaviour
         PrepareInventoryData();
 
     }
-
+    
     private void PrepareInventoryData()
     {
         inventoryData.Initialize();
@@ -30,7 +34,23 @@ public class InventoryController : MonoBehaviour
             inventoryData.AddItem(item);
         }
     }
-
+    public void AddItem(InventoryItemData item)
+    {
+        // Check if the item already exists in the inventory
+        InventoryItemData existingItem = inventoryItems.Find(i => i.itemName == item.itemName);
+        if (existingItem != null)
+        {
+            existingItem.quantity += item.quantity;
+        }
+        else
+        {
+            inventoryItems.Add(item);
+        }
+    }
+    public void RemoveItem(InventoryItemData item)
+    {
+        inventoryItems.Remove(item);
+    }   
     private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
     {
         inventoryUI.ResetAllItems();
@@ -165,6 +185,19 @@ public class InventoryController : MonoBehaviour
             else
             {
                 inventoryUI.Hide();
+            }
+        }else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isActive)
+            {
+                menu.SetActive(true);
+                isActive = true;
+            }
+            else
+            {
+                menu.SetActive(false);
+
+                isActive = false;
             }
         }
     }

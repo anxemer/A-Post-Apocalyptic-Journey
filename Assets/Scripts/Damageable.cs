@@ -19,7 +19,7 @@ public class Damageable : MonoBehaviour
     private float timeSinceHit = 0;
     public int Health { get { 
             return _health;
-        } private set { 
+        }  set { 
             _health = value;
             playerHealthChanged?.Invoke(Health, _maxHealth);
 

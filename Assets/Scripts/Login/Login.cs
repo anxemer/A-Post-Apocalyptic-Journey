@@ -1,41 +1,37 @@
-﻿using Assets.Scripts.Login;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.SearchService;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Login : MonoBehaviour
 {
     [SerializeField] private TMP_InputField UserName;
     [SerializeField] private TMP_InputField Password;
     [SerializeField] private Button loginBtn;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        loginBtn.onClick.AddListener(OnLoginButtonClick);
     }
 
     public void OnLoginButtonClick()
     {
         string username = UserName.text;
         string password = Password.text;
-        int pass = int.Parse(password);
-        StartCoroutine(LoginRequest("https://66779215145714a1bd750fcd.mockapi.io/api/account/user/", pass));
+        StartCoroutine(LoginRequest(username, password));
     }
-   public IEnumerator LoginRequest(string url, int id)
-    {
-        string urlString = url + id;
 
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(urlString))
+    public IEnumerator LoginRequest(string username, string password)
+    {
+        string url = $"https://localhost:7027/Login?userName={username}&password={password}";
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Gửi yêu cầu và đợi phản hồi
             yield return webRequest.SendWebRequest();
-            //string json = webRequest.downloadHandler.text;
-            //Account account = JsonUtility.FromJson<Account>(jsonData);
+
             // Kiểm tra lỗi khi gửi yêu cầu
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
@@ -44,27 +40,25 @@ public class Login : MonoBehaviour
             else
             {
                 string apiResponse = webRequest.downloadHandler.text;
-                Account apiData = JsonUtility.FromJson<Account>(apiResponse);
+                ApiResponse responseData = JsonUtility.FromJson<ApiResponse>(apiResponse);
 
-                if (apiData != null)
+                if (responseData != null && responseData.response_Code == 0)
                 {
-                    LoginResult(apiData);
+                    Debug.Log("Đăng nhập thành công");
+                    SceneManager.LoadScene("Tivo");
                 }
                 else
                 {
-                    Debug.Log("API returned null data or data could not be parsed");
+                    Debug.Log("Đăng nhập thất bại hoặc dữ liệu trả về không hợp lệ");
                 }
-
-
             }
         }
     }
-    void LoginResult(Account account)
-    {
-        if(account.id != int.Parse(Password.text))
-        {
-            Debug.Log("thành công");
-            SceneManager.LoadScene("Tivo");
-        }
-    }
+}
+
+[System.Serializable]
+public class ApiResponse
+{
+    public int response_Code;
+    // Các trường khác nếu có
 }

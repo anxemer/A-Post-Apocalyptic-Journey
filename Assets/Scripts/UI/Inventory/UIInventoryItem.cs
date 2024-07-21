@@ -17,15 +17,21 @@ public class UIInventoryItem : MonoBehaviour, IPointerClickHandler,
 
     private void Awake()
     {
+
         ResetData();
         Desert();
     }
 
     public void ResetData()
     {
-        borderImage.enabled = false;
-
-        this.itemImage.gameObject.SetActive(false);
+        if (itemImage != null)
+        {
+            this.itemImage.gameObject.SetActive(false);
+        }
+        if (borderImage != null)
+        {
+            borderImage.enabled = false;
+        }
         empty = true;
     }
 
@@ -46,7 +52,10 @@ public class UIInventoryItem : MonoBehaviour, IPointerClickHandler,
     }
     public void Deselect()
     {
-        borderImage.enabled = false;
+        if (borderImage != null)
+        {
+            borderImage.enabled = false;
+        }
     }
     public void OnDrag(PointerEventData eventData)
     {

@@ -21,7 +21,7 @@ TagManager:
   - Food
   - NPC
   - Item
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 975551645
+    locked: 0
+  - name: Interactable
+    uniqueID: 365206165
     locked: 0

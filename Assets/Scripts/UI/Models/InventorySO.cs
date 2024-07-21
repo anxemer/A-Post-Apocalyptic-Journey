@@ -11,7 +11,8 @@ namespace Inventory.Model
     {
         [SerializeField]
         private List<InventoryItem> inventoryItems;
-
+        [SerializeField] public bool HasAnswer { get; set; } = false;
+        [SerializeField] public bool AnswerCorrect { get; set; } = false;
         [field: SerializeField]
         public int Size { get; private set; } = 10;
 
